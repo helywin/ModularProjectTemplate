@@ -1,3 +1,4 @@
+include_guard()
 include(CMakePrintHelpers)
 include(GenerateExportHeader)
 include(GenerateMetaInfo)
@@ -29,6 +30,9 @@ macro(set_submodule_library PREFIX_NAME_IN MODULE_NAME_IN)
             DEBUG_POSTFIX d
             NAMESPACE ${CURRENT_PREFIX_NAME}
             )
+    target_include_directories(${CURRENT_MODULE_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+    target_include_directories(${CURRENT_MODULE_TARGET} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+    target_include_directories(${CURRENT_MODULE_TARGET} PUBLIC ${CMAKE_BINARY_DIR})
     string(TOUPPER ${CURRENT_MODULE_NAME} MODULE_NAME_UPPER)
     string(TOUPPER ${CURRENT_PREFIX_NAME} PREFIX_NAME_UPPER)
     generate_export_header(${CURRENT_MODULE_TARGET}
@@ -58,6 +62,7 @@ macro(set_submodule_executable PREFIX_NAME_IN MODULE_NAME_IN)
             DEBUG_POSTFIX ""
             NAMESPACE ${CURRENT_PREFIX_NAME}
             )
+    target_include_directories(${CURRENT_MODULE_TARGET} PUBLIC ${CMAKE_BINARY_DIR})
     append_module_list()
 endmacro()
 

@@ -1,6 +1,6 @@
 function(set_build_time_header)
-    set(options PATH EACH_BUILD)
-    set(oneValueArgs TARGET)
+    set(options EACH_BUILD)
+    set(oneValueArgs PATH TARGET)
     set(multiValueArgs)
     cmake_parse_arguments(
             ARG

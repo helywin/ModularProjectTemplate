@@ -1,3 +1,6 @@
+include_guard()
+include(ReadVersion)
+
 function(clear_variable VAR)
     if (NOT ${VAR})
         set(${VAR} "" PARENT_SCOPE)
@@ -38,17 +41,10 @@ function(generate_meta_info OUT_FILE_NAME)
         endif ()
     endif ()
 
-    string(STRIP ${ARG_PRODUCT_VERSION} VERSION_STR)
-    string(REPLACE "." ";" VERSION_STR_LIST ${VERSION_STR})
-    list(LENGTH VERSION_STR_LIST LEN)
-    if (NOT LEN EQUAL 4)
-        message(FATAL_ERROR "PRODUCT_VERSION format error, example: 1.2.3.0")
-    endif ()
-
-    list(GET VERSION_STR_LIST 0 RC_VERSION_MAJOR)
-    list(GET VERSION_STR_LIST 1 RC_VERSION_MINOR)
-    list(GET VERSION_STR_LIST 2 RC_VERSION_PATCH)
-    list(GET VERSION_STR_LIST 3 RC_VERSION_TWEAK)
+    set(RC_VERSION_MAJOR ${GENERAL_VERSION_MAJOR})
+    set(RC_VERSION_MINOR ${GENERAL_VERSION_MINOR})
+    set(RC_VERSION_PATCH ${GENERAL_VERSION_PATCH})
+    set(RC_VERSION_TWEAK ${GENERAL_VERSION_TWEAK})
 
     clear_variable(ARG_FILE_VERSION)
     #    clear_variable(ARG_DESCRIPTION)
