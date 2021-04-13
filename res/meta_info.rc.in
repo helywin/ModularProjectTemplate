@@ -3,6 +3,9 @@
 #else
 #include <winver.h>
 #endif
+
+@RC_ICON@
+
 VS_VERSION_INFO VERSIONINFO
         FILEVERSION @RC_FILE_VERSION_NUM@
         PRODUCTVERSION @RC_PRODUCT_VERSION_NUM@

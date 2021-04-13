@@ -9,7 +9,7 @@ endfunction()
 
 function(generate_meta_info OUT_FILE_NAME)
     set(options DESCRIPTION FILE_VERSION TEMPLATE_FILE_PATH COMMENTS COMPANY COPYRIGHT TRADEMARKS BUILD_INFO)
-    set(oneValueArgs MODULE_NAME PRODUCT_NAME ORIGINAL_FILE_NAME PRODUCT_VERSION)
+    set(oneValueArgs MODULE_NAME PRODUCT_NAME ORIGINAL_FILE_NAME PRODUCT_VERSION ICON)
     set(multiValueArgs)
     cmake_parse_arguments(
             ARG
@@ -66,6 +66,11 @@ function(generate_meta_info OUT_FILE_NAME)
         set(ARG_COPYRIGHT "Copyright(C) ${DATE} All right reserved.")
     endif ()
 
+    if (NOT ARG_ICON OR CURRENT_MODULE_TYPE MATCHES "LIBRARY")
+        set(RC_ICON "")
+    else ()
+        set(RC_ICON "IDI_ICON1 ICON DISCARDABLE \"${ARG_ICON}\"")
+    endif ()
     set(RC_VERSION_NUM ${RC_VERSION_MAJOR},${RC_VERSION_MINOR},${RC_VERSION_PATCH},${RC_VERSION_TWEAK})
     set(RC_VERSION_STR "\"${RC_VERSION_MAJOR}.${RC_VERSION_MINOR}.${RC_VERSION_PATCH}.${RC_VERSION_TWEAK}\"")
     set(RC_FILE_VERSION_NUM ${RC_VERSION_NUM})

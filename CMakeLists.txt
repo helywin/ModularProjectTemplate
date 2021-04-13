@@ -10,6 +10,7 @@ include(Submodule)
 include(GenerateMetaInfo)
 include(UpdateBuildTime)
 include(ReadVersion)
+include(SetOutputPath)
 
 generate_version_file(APP_NAME MyApp APP_ORG MyOrganization)
 
