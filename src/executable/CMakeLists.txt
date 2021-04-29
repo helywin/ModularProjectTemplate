@@ -12,3 +12,6 @@ target_sources(${CURRENT_MODULE_TARGET} PRIVATE ${META_FILE})
 
 # use generator expression to make only release build will update build time header before build process
 set_build_time_header(TARGET ${CURRENT_MODULE_TARGET} $<$<STREQUAL:${CMAKE_BUILD_TYPE},Release>:EACH_BUILD>)
+target_link_libraries(${CURRENT_MODULE_TARGET}
+        CMake.Library)
+print_target_properties(CMake.Executable)
