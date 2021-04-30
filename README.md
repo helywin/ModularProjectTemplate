@@ -9,6 +9,18 @@
 - fetch git repo info
 - generate dll export header (Windows)
 
+## Todo
+
+- Qt template
+- automatic package generation
+- basic libraries
+
 ## Status
+
 - [x] Windows
-- [ ] Linux
+- [x] Linux
+
+## License
+
+Copyright © 2021, [Helywin](https://github.com/helywin).
+Released under the [MIT license](LICENSE).

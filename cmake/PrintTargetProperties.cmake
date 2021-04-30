@@ -1,5 +1,5 @@
 include_guard()
-# https://stackoverflow.com/questions/32183975/how-to-print-all-the-properties-of-a-target-in-cmake
+# ref: https://stackoverflow.com/questions/32183975/how-to-print-all-the-properties-of-a-target-in-cmake
 # Get all propreties that cmake supports
 execute_process(COMMAND cmake --help-property-list OUTPUT_VARIABLE CMAKE_PROPERTY_LIST)
 list(REMOVE_DUPLICATES CMAKE_PROPERTY_LIST)
